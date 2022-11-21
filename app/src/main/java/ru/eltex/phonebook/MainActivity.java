@@ -20,9 +20,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         User[] users = {
-                new User("Ivan", "700"),
-                new User("Mary", "800"),
-                new User("Dmitry", "900"),
+                new Manager("Ivan", "700", "M"),
+                new Manager("Mary", "800", "W"),
+                new Developer("Dmitry", "900","M"),
+                new Developer("Katy", "600", "W")
         };
 
         PhoneAdapter phoneAdapter = new PhoneAdapter(this, users);

@@ -4,10 +4,12 @@ public class User {
 
     private String name;
     private String phone;
+    private String gender;
 
-    public User(String name, String phone){
+    public User(String name, String phone, String gender){
         this.name = name;
         this.phone = phone;
+        this.gender = gender;
     }
 
     public String getName() {
@@ -24,5 +26,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

@@ -36,7 +36,16 @@ public class PhoneAdapter extends ArrayAdapter<User> {
         phone.setText(this.users[position].getPhone());
 
         ImageView imageView = (ImageView) view.findViewById(R.id.avatar);
-        imageView.setImageResource(R.drawable.ic_launcher_foreground);
+
+        if("Developer".equals(this.users[position].getClass().getSimpleName())) {
+            if("M".equals(this.users[position].getGender())) {
+                imageView.setImageResource(R.drawable.developer_man);
+            }else imageView.setImageResource(R.drawable.developer_woman);
+        }else if("Manager".equals(this.users[position].getClass().getSimpleName())){
+            if("M".equals(this.users[position].getGender())) {
+                imageView.setImageResource(R.drawable.manager_man);
+            }else imageView.setImageResource(R.drawable.manager_woman);
+        }else imageView.setImageResource(R.drawable.ic_launcher_foreground);
 
         return view;
     }
