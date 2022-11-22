@@ -2,14 +2,17 @@ package ru.eltex.phonebook;
 
 public class User {
 
+    private final String GENDER_MEN = "Men";
+    private final String GENDER_WOMEN = "Woman";
+
     private String name;
     private String phone;
-    private String gender;
+    private boolean genderMen;
 
-    public User(String name, String phone, String gender){
+    public User(String name, String phone, boolean genderMen){
         this.name = name;
         this.phone = phone;
-        this.gender = gender;
+        this.genderMen = genderMen;
     }
 
     public String getName() {
@@ -28,11 +31,15 @@ public class User {
         this.phone = phone;
     }
 
-    public String getGender() {
-        return gender;
+    public boolean getGenderMen() {
+        return genderMen;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(boolean genderMen) {
+        this.genderMen = genderMen;
+    }
+
+    public String getGender(){
+        return genderMen ? GENDER_MEN : GENDER_WOMEN;
     }
 }
