@@ -1,6 +1,6 @@
 package ru.eltex.phonebook;
 
-public class User {
+public abstract class User {
 
     private final String GENDER_MEN = "Men";
     private final String GENDER_WOMEN = "Woman";
@@ -9,7 +9,7 @@ public class User {
     private String phone;
     private boolean genderMen;
 
-    public User(String name, String phone, boolean genderMen){
+    public User(String name, String phone, boolean genderMen) {
         this.name = name;
         this.phone = phone;
         this.genderMen = genderMen;
@@ -39,7 +39,11 @@ public class User {
         this.genderMen = genderMen;
     }
 
-    public String getGender(){
+    public String getGender() {
         return genderMen ? GENDER_MEN : GENDER_WOMEN;
     }
+
+    public abstract String toString();
+
+    public abstract String toJSONString();
 }

@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         PhoneAdapter phoneAdapter = new PhoneAdapter(this, users);
         mainList.setAdapter(phoneAdapter);
 
+        System.out.println(users[1]);
+
 //        mainList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
