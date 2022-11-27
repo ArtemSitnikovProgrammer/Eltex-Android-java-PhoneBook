@@ -1,6 +1,7 @@
 package ru.eltex.phonebook;
 
 import android.content.Context;
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,18 @@ public class PhoneAdapter extends ArrayAdapter<User> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, users[position].getGender(), Toast.LENGTH_SHORT).show();
+
+                Intent toInfo = null;
+                if(users.get(position) instanceof Developer)
+                    toInfo = new Intent(context, DevActivity.class);
+                if(users.get(position) instanceof Manager)
+                    toInfo = new Intent(context, ManagerActivity.class);
+
+                toInfo.putExtra("name",users.get(position).getName());
+                toInfo.putExtra("phone",users.get(position).getPhone());
+                context.startActivity(toInfo);
+
+                Toast.makeText(context, users.get(position).getGender(), Toast.LENGTH_SHORT).show();
 
             }
         });
