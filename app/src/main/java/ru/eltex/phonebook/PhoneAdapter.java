@@ -13,12 +13,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 public class PhoneAdapter extends ArrayAdapter<User> {
 
     private Context context;
-    private User[] users;
+    private List<User> users;
 
-    PhoneAdapter(Context context, User[] users){
+    PhoneAdapter(Context context, List<User> users){
         super(context,R.layout.item, users);
         this.context = context;
         this.users = users;
@@ -31,19 +33,19 @@ public class PhoneAdapter extends ArrayAdapter<User> {
         View view = inflater.inflate(R.layout.item, parent, false);
 
         TextView name = (TextView) view.findViewById(R.id.name);
-        name.setText(this.users[position].getName());
+        name.setText(this.users.get(position).getName());
 
         TextView phone = (TextView) view.findViewById(R.id.phone);
-        phone.setText(this.users[position].getPhone());
+        phone.setText(this.users.get(position).getPhone());
 
         ImageView imageView = (ImageView) view.findViewById(R.id.avatar);
 
-        if(this.users[position] instanceof Developer) {
-            if(this.users[position].getGenderMen()) {
+        if(this.users.get(position) instanceof Developer) {
+            if(this.users.get(position).getGenderMen()) {
                 imageView.setImageResource(R.drawable.developer_man);
             }else imageView.setImageResource(R.drawable.developer_woman);
-        }else if(this.users[position] instanceof Manager){
-            if(this.users[position].getGenderMen()) {
+        }else if(this.users.get(position) instanceof Manager){
+            if(this.users.get(position).getGenderMen()) {
                 imageView.setImageResource(R.drawable.manager_man);
             }else imageView.setImageResource(R.drawable.manager_woman);
         }else imageView.setImageResource(R.drawable.ic_launcher_foreground);

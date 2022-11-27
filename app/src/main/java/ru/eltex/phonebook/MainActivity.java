@@ -9,7 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    static List<User> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,19 +23,18 @@ public class MainActivity extends AppCompatActivity {
 
         ListView mainList = (ListView) findViewById(R.id.main_list);
 
+        users = new LinkedList<>();
 
-        User[] users = {
-                new Developer("Nika", "500", false),
-                new Manager("Ivan", "600", true),
-                new Manager("Mary", "700", false),
-                new Developer("Dmitry", "800",true),
-                new Developer("Katy", "900", false)
-        };
+        users.add(new Developer("Nika", "500", false));
+        users.add(new Manager("Ivan", "600", true));
+        users.add(new Manager("Mary", "700", false));
+        users.add(new Developer("Dmitry", "800",true));
+        users.add(new Developer("Katy", "900", false));
+
 
         PhoneAdapter phoneAdapter = new PhoneAdapter(this, users);
         mainList.setAdapter(phoneAdapter);
 
-        System.out.println(users[1]);
 
 //        mainList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
