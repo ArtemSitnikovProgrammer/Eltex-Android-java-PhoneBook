@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -24,7 +26,9 @@ public class AddActivity extends AppCompatActivity {
 
                 String name = ((EditText) findViewById(R.id.name)).getText().toString();
                 String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
-                System.out.println(name + " " + phone);
+                //String gender = ((RadioGroup) findViewById(R.id.gender_radioGroup)).getTransitionName();
+
+                System.out.println(name + " " + phone + " ");
 
 
             }
