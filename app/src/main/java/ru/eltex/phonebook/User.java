@@ -7,12 +7,19 @@ public abstract class User {
 
     private String name;
     private String phone;
+    private String gender;
     private boolean genderMen;
 
     public User(String name, String phone, boolean genderMen) {
         this.name = name;
         this.phone = phone;
         this.genderMen = genderMen;
+    }
+
+    public User(String name, String phone, String gender){
+        this.name = name;
+        this.phone = phone;
+        this.gender = gender;
     }
 
     public String getName() {
