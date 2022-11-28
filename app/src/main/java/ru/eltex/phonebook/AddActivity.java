@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -13,6 +14,9 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        ImageView imageView = (ImageView) findViewById(R.id.avatar);
+        imageView.setImageResource(R.drawable.ic_launcher_foreground);
 
         ((Button) findViewById(R.id.add_button)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -22,7 +26,7 @@ public class AddActivity extends AppCompatActivity {
                 String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
                 System.out.println(name + " " + phone);
 
-                
+
             }
         });
 
