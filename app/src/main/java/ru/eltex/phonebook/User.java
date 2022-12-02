@@ -20,6 +20,9 @@ public abstract class User {
         this.name = name;
         this.phone = phone;
         this.gender = gender;
+
+        if(gender.equals(GENDER_MEN)) genderMen = true;
+        else if(gender.equals(GENDER_WOMEN)) genderMen = false;
     }
 
     public String getName() {

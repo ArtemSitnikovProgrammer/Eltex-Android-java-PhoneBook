@@ -6,6 +6,10 @@ public class Manager extends User{
         super(name, phone,genderMen);
     }
 
+    public Manager(String name, String phone, String gender) {
+        super(name, phone, gender);
+    }
+
     @Override
     public String toString() {
         return "Manager: " + this.getName() + " " + this.getPhone();
