@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 public class AddActivity extends AppCompatActivity {
+    String gender;
+    String employee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +27,58 @@ public class AddActivity extends AppCompatActivity {
 
                 String name = ((EditText) findViewById(R.id.name)).getText().toString();
                 String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
-                //String gender = ((RadioGroup) findViewById(R.id.gender_radioGroup)).getTransitionName();
 
-                System.out.println(name + " " + phone + " ");
+                System.out.println(name + " " + phone + " " + gender);
 
+                if(employee.equals(Developer.class.getSimpleName())) {
+                    MainActivity.users.add(new Developer(name, phone, gender));
+                    System.out.println("ADD DEVELOPER");
+                }else if(employee.equals(Manager.class.getSimpleName())){
+                    MainActivity.users.add(new Manager(name,phone,gender));
+                    System.out.println("ADD MANAGER");
+                }
 
+                finish();
+            }
+        });
+
+        ((RadioGroup) findViewById(R.id.employee_radioGroup))
+                .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                        switch (checkedId) {
+                            case -1:
+                                employee = "Ничего не выбрано";
+                                break;
+                            case R.id.radio_developer:
+                                employee = "Developer";
+                                break;
+                            case R.id.radio_manager:
+                                employee = "Manager";
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+
+        ((RadioGroup) findViewById(R.id.gender_radioGroup))
+                .setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case -1:
+                        gender = "Ничего не выбрано";
+                        break;
+                    case R.id.radio_men:
+                        gender = "Men";
+                        break;
+                    case R.id.radio_women:
+                        gender = "Women";
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
