@@ -119,6 +119,50 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:text="Должность: "/>
+
+        <RadioGroup
+            android:id="@+id/employee_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/radio_developer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Разработчик"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/radio_manager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Менеджер"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+        </RadioGroup>
+
+
+    </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
