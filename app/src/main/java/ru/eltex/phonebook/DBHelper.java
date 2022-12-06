@@ -12,8 +12,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE users (id NUMBER, name TEXT, phone TEXT);");
-        sqLiteDatabase.execSQL("INSERT INTO users VALUES (1,\"Ivan\",\"900\"),(2,\"Mary\",\"800\"),(3,\"Anton\",\"700\");");
+       sqLiteDatabase.execSQL("CREATE TABLE users (id NUMBER, name TEXT, phone TEXT, employee TEXT, gender TEXT);");
+//        sqLiteDatabase.execSQL("INSERT INTO users VALUES (1,\"Nika\",\"500\",\"Developer\",\"Women\"),(2,\"Ivan\",\"600\",\"Manager\",\"Men\"),(3,\"Mary\",\"700\",\"Manager\",\"Women\");");
     }
 
     @Override

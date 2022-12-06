@@ -29,21 +29,25 @@ public class MainActivity extends AppCompatActivity {
         users = new LinkedList<>();
 
         SQLiteDatabase database = new DBHelper(this).getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM users;",null);
+        Cursor cursor = database.rawQuery("SELECT * FROM users;", null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
-            System.out.println("User: " + cursor.getString(1) + "- " + cursor.getString(2));
-            users.add(new Developer(cursor.getString(1), cursor.getString(2), true));
+        while (!cursor.isAfterLast()) {
+            String name = cursor.getString(1);
+            String phone = cursor.getString(2);
+            String employee = cursor.getString(3);
+            String gender = cursor.getString(4);
+
+            if (employee.equals(Developer.class.getSimpleName())) {
+                users.add(new Developer(name, phone, gender));
+                System.out.println("ADD DEVELOPER");
+            } else if (employee.equals(Manager.class.getSimpleName())) {
+                users.add(new Manager(name, phone, gender));
+                System.out.println("ADD MANAGER");
+            }
+            System.out.println(ENV.ID);
             cursor.moveToNext();
         }
         cursor.close();
-
-//        users.add(new Developer("Nika", "500", false));
-//        users.add(new Manager("Ivan", "600", true));
-//        users.add(new Manager("Mary", "700", false));
-//        users.add(new Developer("Dmitry", "800",true));
-//        users.add(new Developer("Katy", "900", false));
-
 
         PhoneAdapter phoneAdapter = new PhoneAdapter(this, users);
         mainList.setAdapter(phoneAdapter);
@@ -82,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        SharedPreferences preferences = getSharedPreferences("INFO",MODE_PRIVATE);
-        Toast.makeText(this, preferences.getString("APP_STATUS", "STOP"),Toast.LENGTH_SHORT).show();
+        SharedPreferences preferences = getSharedPreferences("INFO", MODE_PRIVATE);
+        Toast.makeText(this, preferences.getString("APP_STATUS", "STOP"), Toast.LENGTH_SHORT).show();
     }
 }
