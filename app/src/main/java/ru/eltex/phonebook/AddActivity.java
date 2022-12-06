@@ -2,12 +2,15 @@ package ru.eltex.phonebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class AddActivity extends AppCompatActivity {
     String gender;
@@ -17,6 +20,9 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        SharedPreferences preferences = getSharedPreferences("INFO",MODE_PRIVATE);
+        Toast.makeText(this, preferences.getString("APP_STATUS", "STOP"), Toast.LENGTH_SHORT).show();
 
         ImageView imageView = (ImageView) findViewById(R.id.avatar);
         imageView.setImageResource(R.drawable.ic_launcher_foreground);

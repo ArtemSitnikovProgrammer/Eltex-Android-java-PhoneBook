@@ -3,9 +3,13 @@ package ru.eltex.phonebook;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import java.util.LinkedList;
@@ -47,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
             Intent toAdd = new Intent(getApplicationContext(), AddActivity.class);
             startActivity(toAdd);
         });
+
+//        SharedPreferences preferences = getSharedPreferences("INFO",MODE_PRIVATE);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("APP_STATUS", "READY");
+//        editor.commit();
+//
+//        Toast.makeText(this, preferences.getString("APP_STATUS", "STOP"),Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -55,5 +66,13 @@ public class MainActivity extends AppCompatActivity {
         ListView mainList = (ListView) findViewById(R.id.main_list);
         PhoneAdapter phoneAdapter = new PhoneAdapter(this, users);
         mainList.setAdapter(phoneAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        SharedPreferences preferences = getSharedPreferences("INFO",MODE_PRIVATE);
+        Toast.makeText(this, preferences.getString("APP_STATUS", "STOP"),Toast.LENGTH_SHORT).show();
     }
 }
