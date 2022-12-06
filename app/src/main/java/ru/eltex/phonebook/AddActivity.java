@@ -33,8 +33,11 @@ public class AddActivity extends AppCompatActivity {
 
                 String name = ((EditText) findViewById(R.id.name)).getText().toString();
                 String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
-
                 System.out.println(name + " " + phone + " " + gender);
+
+                SQLiteDatabase database = new DBHelper(getApplicationContext()).getWritableDatabase();
+                database.execSQL("INSERT INTO users(name, phone) VALUES('" + name + "', '" + phone + "')");
+                database.close();
 
                 if(employee.equals(Developer.class.getSimpleName())) {
                     MainActivity.users.add(new Developer(name, phone, gender));

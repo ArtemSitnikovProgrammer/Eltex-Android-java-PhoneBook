@@ -28,11 +28,21 @@ public class MainActivity extends AppCompatActivity {
 
         users = new LinkedList<>();
 
-        users.add(new Developer("Nika", "500", false));
-        users.add(new Manager("Ivan", "600", true));
-        users.add(new Manager("Mary", "700", false));
-        users.add(new Developer("Dmitry", "800",true));
-        users.add(new Developer("Katy", "900", false));
+        SQLiteDatabase database = new DBHelper(this).getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM users;",null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            System.out.println("User: " + cursor.getString(1) + "- " + cursor.getString(2));
+            users.add(new Developer(cursor.getString(1), cursor.getString(2), true));
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+//        users.add(new Developer("Nika", "500", false));
+//        users.add(new Manager("Ivan", "600", true));
+//        users.add(new Manager("Mary", "700", false));
+//        users.add(new Developer("Dmitry", "800",true));
+//        users.add(new Developer("Katy", "900", false));
 
 
         PhoneAdapter phoneAdapter = new PhoneAdapter(this, users);
